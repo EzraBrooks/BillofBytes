@@ -20,7 +20,11 @@ function callback(contents){
     }
     billactions = "";
   }
-  if(senatetext){document.getElementById("senate").innerHTML = senatetext;}
-  if(housetext){document.getElementById("house").innerHTML = housetext;}
+}
+function showHouse(){
+  document.getElementById("data").innerHTML = housetext;
+};
+function showSenate(){
+  document.getElementById("data").innerHTML = senatetext;
 }
 getApi();
