@@ -1,8 +1,9 @@
-var bodytext = "";
+var senatetext = "";
+var housetext = "";
 var billactions = "";
 function getApi(){
   var api = document.createElement('script');
-  api.src = 'http://www.govtrack.us/api/v2/bill?congress=112&order_by=-current_status_date&format=jsonp'
+  api.src = 'http://www.govtrack.us/api/v2/bill?congress=112&order_by=-current_status_date&format=jsonp&q=internet'
   document.head.appendChild(api)
 }
 function callback(contents){
@@ -11,9 +12,15 @@ function callback(contents){
     for(var j = 0; j < contents.objects[i].major_actions.length; j++){
       billactions = billactions + "<li>" + contents.objects[i].major_actions[j][2] + "</li>"
     }
-    bodytext = bodytext + "<p>"+ contents.objects[i].display_number + ": " + contents.objects[i].current_status_label + "</p>" + "<ul>" + billactions + "</ul>";
-    if(bodytext){document.getElementById("body").innerHTML = bodytext;}
+    if(contents.objects[i].display_number.substr(0,1) == "S"){
+      senatetext = senatetext + "<h3>" + contents.objects[i].display_number + ": " + contents.objects[i].current_status_label + " as of "+ contents.objects[i].current_status_date + ", introduced " + contents.objects[i].introduced_date + ".</h3><ul>" + billactions + "</ul>";
+    }
+    else if(contents.objects[i].display_number.substr(0,1) == "H"){
+      housetext = housetext + "<h3>" + contents.objects[i].display_number + ": " + contents.objects[i].current_status_label + " as of "+ contents.objects[i].current_status_date + ", introduced " + contents.objects[i].introduced_date + ".</h3><ul>" + billactions + "</ul>";
+    }
     billactions = "";
   }
+  if(senatetext){document.getElementById("senate").innerHTML = senatetext;}
+  if(housetext){document.getElementById("house").innerHTML = housetext;}
 }
 getApi();
