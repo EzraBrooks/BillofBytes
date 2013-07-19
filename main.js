@@ -1,10 +1,12 @@
 var senatetext = "";
 var housetext = "";
 var billactions = "";
-function getApi(){ //Retrieve JSONP API file
+function getApi(topic){ //Retrieve JSONP API file
   var api = document.createElement('script');
-  api.src = 'http://www.govtrack.us/api/v2/bill?congress=112&order_by=-current_status_date&format=jsonp&q=internet'
+  api.src = 'http://www.govtrack.us/api/v2/bill?congress=112&order_by=-current_status_date&format=jsonp&q='+topic
   document.head.appendChild(api)
+  senatetext = "";
+  housetext = "";
 }
 function callback(contents){ //API callback
   for(var i = 0; i < contents.objects.length; i++){
@@ -26,4 +28,4 @@ function showHouse(){ //Switch page text to House bills
 function showSenate(){ //Switch page text to Senate bills
   document.getElementById("data").innerHTML = senatetext;
 }
-getApi(); //begin script
+getApi("piracy"); //begin script
