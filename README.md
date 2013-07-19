@@ -1,4 +1,4 @@
-BillBytes
+Bill of Bytes
 =========
 
-Web app for tracking US government technology bills
+Web app for tracking US government technology bills.
