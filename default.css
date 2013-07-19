@@ -1,5 +1,6 @@
 #header{
 	float:left;
+	padding-left:25px;
 	height:10%;
 	width:100%;
 	background:#3399FF;
@@ -7,10 +8,12 @@
 }
 #subtitle{
 	float:left;
+	padding-left:35px;
 	width:100%;
 	background:#3399FF;
 	font-size:18px;
 }
+a:link, a:hover, a:active, a:visited{color:black;}
 h4{
 	margin-left:25px;
 }
