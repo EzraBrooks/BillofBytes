@@ -1,7 +1,5 @@
 #header{
 	float:left;
-	padding-top:0px;
-	padding-left:0px;
 	width:100%;
 	background:#3399FF;
 	font-size:32px;
@@ -21,7 +19,7 @@
 p{
 	padding-left:25px;
 }
-a:link, a:hover, a:active, a:visited{color:black;}
+a.scriptlink:link, a.scriptlink:hover, a.scriptlink:active, a.scriptlink:visited{color:black;}
 h4{
 	margin-left:25px;
 }

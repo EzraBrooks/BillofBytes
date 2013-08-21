@@ -4,7 +4,10 @@ var billactions = "";
 function getApi(topic){ //Retrieve JSONP API file
   var api = document.createElement('script');
   api.src = 'http://www.govtrack.us/api/v2/bill?congress=112&order_by=-current_status_date&format=jsonp&q='+topic
-  document.head.appendChild(api)
+  //console.log(api);
+  if(document.head.lastChild != api){
+    document.head.appendChild(api);
+  };
   senatetext = "";
   housetext = "";
 }
