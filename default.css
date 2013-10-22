@@ -36,11 +36,18 @@ body{
 	background-color: #3333FF;
 }
 p{
-	padding:10px;
+	padding:0;
+}
+h3{
+	padding:0;
+	margin:0;
+	text-indent:15px;
 }
 a.scriptlink:link, a.scriptlink:hover, a.scriptlink:active, a.scriptlink:visited{color:black;}
 h4{
-	margin-left:25px;
+	margin:0;
+	padding:0;
+	text-indent:25px;
 }
 ul{
 	margin-left:35px;
