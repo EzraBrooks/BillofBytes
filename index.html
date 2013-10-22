@@ -1,19 +1,23 @@
 <!DOCTYPE HTML>
 <html>
 <HEAD>
+<title>Bill of Bytes</title>
 <link href="default.css" rel="stylesheet" type="text/css">
 <script src="main.js"></script>
 </HEAD>
 <BODY>
-	<div id = "header">Bill of Bytes</div>
-	<div id = "subtitle">
-		<a class="scriptlink" href="#" onclick="getApi('cybersecurity');">Cybersec</a>
-		<a class="scriptlink" href="#" onclick="getApi('piracy');">Piracy</a>
-		<br/>
-		<a class="scriptlink" href="#" onclick="showBills(housetext);">Show House</a>
-		<a class="scriptlink" href="#" onclick="showBills(senatetext);">Show Senate</a>
+	<div id = "header">Bill of Bytes
+		<div id = "subtitle">
+			<a class="scriptlink" href="#" onclick="getApi('cybersecurity');">Cybersec</a>
+			<a class="scriptlink" href="#" onclick="getApi('piracy');">Piracy</a>
+		</div>
+		<div id = "subsubtitle">
+			<a class="scriptlink" href="#" onclick="showBills(housetext);">Show House</a>
+			<a class="scriptlink" href="#" onclick="showBills(senatetext);">Show Senate</a>
+		</div>
 	</div>
-	<p id = "data"></p>
+	<div id = "container">
+	<p id = "data"><br/></p></div>
 	<div id = "footer">Copyright 2013 Bill of Bytes - API provided by <a href="http://www.govtrack.us">GovTrack</a>.</div>
 </BODY>
 </html>

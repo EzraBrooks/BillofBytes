@@ -1,6 +1,7 @@
 var senatetext = '';
 var housetext = '';
 var billactions = '';
+var loadcomplete = false;
 function getApi(topic){ //Retrieve JSONP API file
   var api = document.createElement('script');
   api.src = 'http://www.govtrack.us/api/v2/bill?congress=112&order_by=-current_status_date&format=jsonp&q='+topic
@@ -28,8 +29,12 @@ function callback(contents){ //API callback
     }
     billactions = '';
   }
+  showBills(housetext);
 }
 function showBills(branchtext){
   document.getElementById('data').innerHTML = branchtext;
 }
-getApi('piracy'); //begin script
+function init(){ //begin script
+  getApi('piracy');
+}
+init();

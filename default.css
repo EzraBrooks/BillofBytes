@@ -3,21 +3,40 @@
 	width:100%;
 	background:#3399FF;
 	font-size:32px;
+	text-indent:10px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
 }
 #subtitle{
 	float:left;
-	width:100%;
+	width:inherit;
+	background:#3399FF;
+	font-size:18px;
+}
+#subsubtitle{
+	float:left;
+	width:inherit;
 	background:#3399FF;
 	font-size:18px;
 }
 #footer{
 	position:fixed;
 	bottom:0px;
-	width:100%;
+	width:inherit;
 	background:#3399FF;
+	text-indent:10px;
+}
+#container{
+	background-color:#FFF;
+	border-radius:5px;
+}
+body{
+	width:50%;
+	margin:auto;
+	background-color: #3333FF;
 }
 p{
-	padding-left:25px;
+	padding:10px;
 }
 a.scriptlink:link, a.scriptlink:hover, a.scriptlink:active, a.scriptlink:visited{color:black;}
 h4{
