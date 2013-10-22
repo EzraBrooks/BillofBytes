@@ -8,12 +8,10 @@ function getApi(topic){ //Retrieve JSONP API file
   for(i=0;i<document.head.childNodes.length;i++){
     if(document.head.childNodes[i] == api){
       document.head.removeChild(document.head.childNodes[i]);
-      document.head.appendChild(api);
       break;
-    }else if(i + 1 == document.head.childNodes.length){
-      document.head.appendChild(api);
     }
   }
+  document.head.appendChild(api);
   senatetext = '';
   housetext = '';
 }
