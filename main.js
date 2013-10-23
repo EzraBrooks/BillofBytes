@@ -1,6 +1,6 @@
 var senatetext = '';
 var housetext = '';
-var billactions = "<div class= 'bill'>";
+var billactions = "";
 var loadcomplete = false;
 function getApi(topic){ //Retrieve JSONP API file
   var api = document.createElement('script');
