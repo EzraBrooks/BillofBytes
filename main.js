@@ -1,6 +1,6 @@
 var senatetext = '';
 var housetext = '';
-var billactions = '';
+var billactions = "<div class= 'bill'>";
 var loadcomplete = false;
 function getApi(topic){ //Retrieve JSONP API file
   var api = document.createElement('script');
@@ -22,10 +22,10 @@ function callback(contents){ //API callback
       billactions = billactions + '<li>' + contents.objects[i].major_actions[j][2] + '</li>'
     }
     if(contents.objects[i].bill_type == 'senate_bill'){
-      senatetext = senatetext + '<h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul>';
+      senatetext =senatetext +  '<div class="senate bill"><h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul></div>';
     }
     else if(contents.objects[i].bill_type == 'house_bill'){
-      housetext = housetext + '<h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul>';
+      housetext =housetext + '<div class="house bill"><h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul></div>';
     }
     billactions = '';
   }

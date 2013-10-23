@@ -1,11 +1,13 @@
 #header{
 	float:left;
+	display: inline-block;
+	clear:all;
 	width:100%;
 	background:#3399FF;
 	font-size:32px;
 	text-indent:10px;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 #subtitle{
 	float:left;
@@ -29,6 +31,8 @@
 #container{
 	background-color:#FFF;
 	border-radius:5px;
+	display:inline-block;
+	padding: 30px auto;
 }
 body{
 	width:50%;
@@ -51,4 +55,11 @@ h4{
 }
 ul{
 	margin-left:35px;
+}
+.bill{
+	width:75%;
+	margin: 10px auto;
+	padding: 20px;
+	background-color: #EEE;
+	border:1px solid black;
 }
