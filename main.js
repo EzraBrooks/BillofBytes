@@ -35,19 +35,11 @@ function callback(contents){ //API callback
     }
 
     if(that.bill_type == 'senate_bill'){
-<<<<<<< HEAD
       senatetext = senatetext +  '<div class="bill '+classes+'"><a onclick="showMore(this);" id="expand"><img src="img/expand.png"></a><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions + '</ul></div>';
       sencount ++;
     }
     else if(that.bill_type == 'house_bill'){
       housetext = housetext + '<div class="bill '+classes+'"><a onclick=showMore('+housecount+') id="expand"><img src="img/expand.png"></a><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions + '</ul></div>';
-=======
-      senatetext = senatetext +  '<div class="bill '+classes+'"><a onclick="showMore(this);" id="expand"><img src="expand.png"></a><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions + '</ul></div>';
-      sencount ++;
-    }
-    else if(that.bill_type == 'house_bill'){
-      housetext = housetext + '<div class="bill '+classes+'"><a onclick="showMore(this);" id="expand"><img src="expand.png"></a><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions + '</ul></div>';
->>>>>>> origin/gh-pages
       housecount++;
     }
     //billactions = '';
