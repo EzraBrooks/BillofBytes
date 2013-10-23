@@ -1,7 +1,9 @@
 var senatetext = '';
 var housetext = '';
-var billactions = "";
+var billactions = [];
+var moreactions = [];
 var loadcomplete = false;
+var last = "house";
 function getApi(topic){ //Retrieve JSONP API file
   var api = document.createElement('script');
   api.src = 'http://www.govtrack.us/api/v2/bill?congress=112&order_by=-current_status_date&format=jsonp&q='+topic
@@ -22,8 +24,13 @@ function callback(contents){ //API callback
   for(var i = 0; i < contents.objects.length; i++){
     var classes = '';
     var that = contents.objects[i]
+    billactions[i] = "";
     for(var j = 0; j < that.major_actions.length && j<5; j++){
-      billactions = billactions + '<li>' + that.major_actions[j][2] + '</li>';
+      if(billactions[i].match(/<li>/) == null || billactions[i].match(/<li>/).length < 5){
+        billactions[i] = billactions[i] + '<li>' + that.major_actions[j][2] + '</li>';
+      }else{
+        moreactions[i] = moreactions[i] + '<li>' + that.major_actions[j][2] + '</li>';
+      }
     }
     //categorize statuses, store to variable classes
     if(['enacted_signed','passed_bill','passed_constamend','enacted_veto_override','passed_concurrentres','passed_simpleres'].indexOf(that.current_status)>-1){
@@ -33,14 +40,11 @@ function callback(contents){ //API callback
     }else if(['introduced','pass_over_senate','pass_over_house', 'referred','pass_back_senate','pass_back_house','override_pass_over_house','override_pass_over_senate','reported'].indexOf(that.current_status)>-1){
       classes = classes + "limbo";
     }
-
     if(that.bill_type == 'senate_bill'){
-      senatetext = senatetext +  '<div class="bill '+classes+'"><a onclick="showMore(this);" id="expand"><img src="img/expand.png"></a><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions + '</ul></div>';
-      sencount ++;
+      senatetext = senatetext +  '<div class="bill '+classes+' '+ 'b'+ i +'"><a href="#" onclick="showMore('+i+');" id="expand"><img src="img/expand.png"></a><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions[i] + '</ul></div>';
     }
     else if(that.bill_type == 'house_bill'){
-      housetext = housetext + '<div class="bill '+classes+'"><a onclick=showMore('+housecount+') id="expand"><img src="img/expand.png"></a><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions + '</ul></div>';
-      housecount++;
+      housetext = housetext + '<div class="bill '+classes+' '+ 'b' + i +'"><a href="#" onclick=showMore('+i+') id="expand"><img src="img/expand.png"></a><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions[i] + '</ul></div>';
     }
     //billactions = '';
   }
@@ -57,11 +61,13 @@ function search(){
   getApi(input);
 }
 function showMore (item) {
-  var className = ' ' + item.parentNode.className + ' ';
-  if (className.indexOf(' tall ')>-1 ) {
-        item.parentNode.className = className.replace(' tall ', ' ');
-    } else {
-        item.parentNode.className += ' tall';
-    }
+  //var className = ' ' + item.parentNode.className + ' ';
+  var className = 'b'+item
+  document.getElementsByClassName(className)[0].innerHTML += moreactions[item]
+  /*if (className.indexOf(' tall ')>-1 ) {
+    item.parentNode.className = className.replace(' tall ', ' ');
+  } else {
+    item.parentNode.className += ' tall';
+  }*/
 }
 init();
