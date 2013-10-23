@@ -47,7 +47,9 @@ h3{
 	margin:0;
 	text-indent:15px;
 }
-a.scriptlink:link, a.scriptlink:hover, a.scriptlink:active, a.scriptlink:visited{color:black;}
+a.scriptlink{
+	color:black;
+}
 h4{
 	margin:0;
 	padding:0;
@@ -60,6 +62,11 @@ ul{
 	width:75%;
 	margin: 10px auto;
 	padding: 20px;
-	background-color: #EEE;
 	border:1px solid black;
+}
+.alive{
+	background-color: #DBFFDE;	
+}
+.dead{
+	background-color: #FFDBDB;
 }
