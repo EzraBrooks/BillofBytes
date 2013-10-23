@@ -4,8 +4,9 @@
 	clear:all;
 	width:100%;
 	background:#3399FF;
-	font-size:32px;
+	font-size:50px;
 	text-indent:10px;
+	font-family: Helvetica, sans-serif;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
@@ -37,7 +38,7 @@
 body{
 	width:50%;
 	margin:auto;
-	background-color: #3333FF;
+	background-color: #9AC1FF;
 }
 p{
 	padding:0;
@@ -62,6 +63,9 @@ ul{
 	margin: 10px;
 	padding: 20px;
 	border:1px solid black;
+	height: 10em;
+	overflow:hidden;
+	
 }
 .alive{
 	background-color: #EDFFEF;	
@@ -71,4 +75,12 @@ ul{
 }
 .limbo{
 	background-color: #FEFFDB;
+}
+#expand{
+	float:right;
+	top:0px;
+}
+.bill.tall{
+	height:auto;
+
 }
