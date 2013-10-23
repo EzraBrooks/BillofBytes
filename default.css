@@ -65,8 +65,11 @@ ul{
 	border:1px solid black;
 }
 .alive{
-	background-color: #DBFFDE;	
+	background-color: #EDFFEF;	
 }
 .dead{
-	background-color: #FFDBDB;
+	background-color: #FFEBEB;
+}
+.limbo{
+	background-color: #FEFFDB;
 }
