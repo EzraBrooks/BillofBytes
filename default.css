@@ -29,8 +29,8 @@
 	text-indent:10px;
 }
 #container{
-	background-color:#FFF;
-	border-radius:5px;
+	background-color:#EEE;
+	/*border-radius:5px;*/
 	display:inline-block;
 	padding: 30px auto;
 }
@@ -59,8 +59,7 @@ ul{
 	margin-left:35px;
 }
 .bill{
-	width:75%;
-	margin: 10px auto;
+	margin: 10px;
 	padding: 20px;
 	border:1px solid black;
 }
