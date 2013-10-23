@@ -19,16 +19,27 @@ function getApi(topic){ //Retrieve JSONP API file
 }
 function callback(contents){ //API callback
   for(var i = 0; i < contents.objects.length; i++){
-    for(var j = 0; j < contents.objects[i].major_actions.length; j++){
-      billactions = billactions + '<li>' + contents.objects[i].major_actions[j][2] + '</li>'
+    var that = contents.objects[i]
+    for(var j = 0; j < that.major_actions.length; j++){
+      billactions = billactions + '<li>' + that.major_actions[j][2] + '</li>'
     }
     //categorize statuses, store to alive
-    senatetext = senatetext+contents.objects[i].is_current;
-    if(contents.objects[i].bill_type == 'senate_bill'){
-      senatetext =senatetext +  '<div class="senate bill'+alive+'"><h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul></div>';
+    //senatetext = senatetext+that.is_current;
+    if(that.bill_type == 'senate_bill'){
+      if(that.is_alive){
+        var life = "alive"
+      }else if(that.current_status == "prov_kill_veto" || that.current_status == "fail_second_senate" || that.current_status == "vetoed_override_fail_second_house" || that.current_status == "fail_originating_house" || that.current_status == "fail_second_house"){
+        //MORE VALUES NEED TO BE ADDED TO THIS LIST, OR USE A LOGIC TRICK TO COVER EVERYTHING
+        var life = "dead"
+      }else if(that.current_status == "introduced" || that.current_status == "referred"){
+        //Same as above comment
+        var life = "limbo"
+      }
+      senatetext = senatetext +  '<div class="senate bill '+life+'"><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions + '</ul></div>';
     }
-    else if(contents.objects[i].bill_type == 'house_bill'){
-      housetext =housetext + '<div class="house bill'+alive+'"><h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul></div>';
+    else if(that.bill_type == 'house_bill'){
+
+      housetext = housetext + '<div class="house bill '+life+'"><h3>' + that.display_number + ': ' + that.current_status_label + ' as of '+ that.current_status_date + ', introduced ' + that.introduced_date + '.</h3><h4>' + that.title_without_number + '</h4><ul>' + billactions + '</ul></div>';
     }
     billactions = '';
   }
