@@ -2,6 +2,7 @@ var senatetext = '';
 var housetext = '';
 var billactions = "";
 var loadcomplete = false;
+var alive = '';
 function getApi(topic){ //Retrieve JSONP API file
   var api = document.createElement('script');
   api.src = 'http://www.govtrack.us/api/v2/bill?congress=112&order_by=-current_status_date&format=jsonp&q='+topic
@@ -21,11 +22,13 @@ function callback(contents){ //API callback
     for(var j = 0; j < contents.objects[i].major_actions.length; j++){
       billactions = billactions + '<li>' + contents.objects[i].major_actions[j][2] + '</li>'
     }
+    //categorize statuses, store to alive
+    senatetext = senatetext+contents.objects[i].is_current;
     if(contents.objects[i].bill_type == 'senate_bill'){
-      senatetext =senatetext +  '<div class="senate bill"><h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul></div>';
+      senatetext =senatetext +  '<div class="senate bill'+alive+'"><h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul></div>';
     }
     else if(contents.objects[i].bill_type == 'house_bill'){
-      housetext =housetext + '<div class="house bill"><h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul></div>';
+      housetext =housetext + '<div class="house bill'+alive+'"><h3>' + contents.objects[i].display_number + ': ' + contents.objects[i].current_status_label + ' as of '+ contents.objects[i].current_status_date + ', introduced ' + contents.objects[i].introduced_date + '.</h3><h4>' + contents.objects[i].title_without_number + '</h4><ul>' + billactions + '</ul></div>';
     }
     billactions = '';
   }
