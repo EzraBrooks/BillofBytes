@@ -26,7 +26,7 @@ function callback(contents){ //API callback
     var that = contents.objects[i]
     billactions[i] = "";
     for(var j = 0; j < that.major_actions.length && j<5; j++){
-      if(billactions[i].match(/<li>/) == null || billactions[i].match(/<li>/).length < 5){
+      if(billactions[i].match(/li/) == null || billactions[i].match(/li/).length / 2 < 5){
         billactions[i] = billactions[i] + '<li>' + that.major_actions[j][2] + '</li>';
       }else{
         moreactions[i] = moreactions[i] + '<li>' + that.major_actions[j][2] + '</li>';
