@@ -1,25 +1,25 @@
 <!DOCTYPE HTML>
 <html>
-<HEAD>
-<title>Bill of Bytes</title>
-<link href="default.css" rel="stylesheet" type="text/css">
-<script src="main.js"></script>
-</HEAD>
-<BODY>
-	<div id = "header">Bill of Bytes
-		<div id = "subtitle">
-			<a class="scriptlink" href="#" onclick="getApi('cybersecurity');">Cybersec</a>
-			<a class="scriptlink" href="#" onclick="getApi('piracy');">Piracy</a>
-			<input type="search" id="searchBox"><input type="submit" name="submit" value="Search" onclick="search()">
+	<head>
+		<title>Bill of Bytes</title>
+		<link href="default.css" rel="stylesheet" type="text/css">
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<div id = "header">
+			Bill of Bytes
+			<div id = "subtitle">
+				<a class="scriptlink" href="#" onclick="getApi('cybersecurity');">Cybersec</a>
+				<a class="scriptlink" href="#" onclick="getApi('piracy');">Piracy</a>
+				<input type="search" id="searchBox"><input type="submit" name="submit" value="Search" onclick="search()">
+			</div>
+			<div id = "subsubtitle">
+				<a class="scriptlink" href="#" onclick="showBills(housetext);">Show House</a>
+				<a class="scriptlink" href="#" onclick="showBills(senatetext);">Show Senate</a>
+			</div>
 		</div>
-		<div id = "subsubtitle">
-			<a class="scriptlink" href="#" onclick="showBills(housetext);">Show House</a>
-			<a class="scriptlink" href="#" onclick="showBills(senatetext);">Show Senate</a>
-		</div>
-	</div>
-
-	<div id = "container">
-	<p id = "data"><br/></p></div>
-	<div id = "footer">Copyright 2013 Bill of Bytes - API provided by <a href="http://www.govtrack.us">GovTrack</a>.</div>
-</BODY>
+		<div id = "container">
+		<p id = "data"><br/></p></div>
+		<div id = "footer">Copyright 2013 Bill of Bytes - data provided by the <a href="https://www.sunlightfoundation.com">Sunlight Foundation</a>.</div>
+	</body>
 </html>
