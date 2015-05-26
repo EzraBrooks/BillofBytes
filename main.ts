@@ -4,24 +4,38 @@ var billactions = [];
 var moreactions = [];
 var loadcomplete = false;
 var last = "house";
+//please don't steal my API key ;_;
+var apiKey: string = "103ecb550e38406382359bdc61a5059d";
 
-function getApi(topic){ //Retrieve JSONP API file
-  	var api = document.createElement('script');
-  	api.src = 'http://www.govtrack.us/api/v2/bill?congress=112&order_by=-current_status_date&format=jsonp&q='+topic
-  	//console.log(api);
-  	for(var i = 0;i<document.head.childNodes.length;i++){
-    	if(document.head.childNodes[i] == api){
-      		document.head.removeChild(document.head.childNodes[i]);
-      		break;
-    	}
+//Big thanks to Nicholas Zakas for writing and publishing the original JS version of this function
+function createCORSRequest(): XMLHttpRequest{
+  	var xhr: XMLHttpRequest = new XMLHttpRequest();
+  	if (!("withCredentials" in xhr)) {
+    	// Check if the XMLHttpRequest object has a "withCredentials" property.
+    	// "withCredentials" only exists on XMLHTTPRequest2 objects, which are necessary for CORS.
+		alert("Your browser doesn't support some modern JavaScript functions. Please update to a modern browser!");
+    	throw new Error('CORS not supported.');
   	}
-  	document.head.appendChild(api);
-  	senatetext = '';
-	housetext = '';
+  	return xhr;
 }
 
-function callback(contents){ //API callback
-	JSON.parse(contents);
+//TODO make EVERYTHING strongly typed. LEAVE NO "ANY" ALIVE
+//TODO make most comments JSDoc-compatible
+function getApi(topic){
+	var apiRequest: XMLHttpRequest = createCORSRequest();
+	apiRequest.open('GET', 'https://congress.api.sunlightfoundation.com/bills/search?query=' + topic + '&apikey=' + apiKey);
+	apiRequest.onloadend = apiHandler;
+	apiRequest.send();
+}
+
+function apiHandler(): void{
+	if (this.response != 200){
+		alert('API retrieval failed.');
+		throw new Error('API request failed: ' + this.statusText);
+	}else{
+		parseBills(JSON.parse(this.responseText));
+	}
+}
   	var sencount = 0;
   	var housecount=0;
   	for(var i = 0; i < contents.objects.length; i++){
