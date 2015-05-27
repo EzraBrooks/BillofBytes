@@ -29,7 +29,7 @@ function getApi(topic){
 }
 
 function apiHandler(): void{
-	if (this.response != 200){
+	if (this.status != 200){
 		alert('API retrieval failed.');
 		throw new Error('API request failed: ' + this.statusText);
 	}else{
