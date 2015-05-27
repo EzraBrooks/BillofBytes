@@ -15,23 +15,23 @@ function createCORSRequest(): XMLHttpRequest{
   	return xhr;
 }
 
+//TODO add a way to show more details on individual bills
 //TODO make EVERYTHING strongly typed. LEAVE NO "ANY" ALIVE
 //TODO make most comments JSDoc-compatible
 function getApi(topic){
 	var apiRequest: XMLHttpRequest = createCORSRequest();
 	apiRequest.open('GET', 'https://congress.api.sunlightfoundation.com/bills/search?query=' + topic + '&apikey=' + apiKey);
-	apiRequest.onloadend = apiHandler;
+	apiRequest.onloadend = function(){
+		if(apiRequest.status != 200){
+			alert('API retrieval failed.');
+			throw new Error('API request failed: ' + apiRequest.statusText);
+		}else{
+			parseBills(JSON.parse(apiRequest.responseText))
+		}
+	};
 	apiRequest.send();
 }
 
-function apiHandler(): void{
-	if (this.status != 200){
-		alert('API retrieval failed.');
-		throw new Error('API request failed: ' + this.statusText);
-	}else{
-		parseBills(JSON.parse(this.responseText));
-	}
-}
 //API callback
 function parseBills(contents){
 	senateBills = document.createElement('ul');
