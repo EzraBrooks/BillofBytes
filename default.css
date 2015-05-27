@@ -1,5 +1,12 @@
+/* TODO: Switch all units to window- or viewport-scaling measurements */
+body{
+	padding:0;
+	width:50%;
+	margin:auto;
+	background-color: #9AC1FF;
+}
+
 #header{
-	float:left;
 	display: inline-block;
 	clear:all;
 	width:100%;
@@ -10,18 +17,21 @@
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
+
 #subtitle{
 	float:left;
 	width:inherit;
 	background:#3399FF;
 	font-size:18px;
 }
+
 #subsubtitle{
 	float:left;
 	width:inherit;
 	background:#3399FF;
 	font-size:18px;
 }
+
 #footer{
 	position:fixed;
 	bottom:0px;
@@ -29,57 +39,56 @@
 	background:#3399FF;
 	text-indent:10px;
 }
+
 #container{
 	background-color:#EEE;
-	/*border-radius:5px;*/
 	display:inline-block;
-	padding: 30px auto;
+	width: 100%;
+	min-height: 100%;
 }
-body{
-	width:50%;
-	margin:auto;
-	background-color: #9AC1FF;
-}
-p{
-	padding:0;
-}
-h3{
+
+#header h3{
 	padding:0;
 	margin:0;
 	text-indent:15px;
 }
+
 a.scriptlink{
 	color:black;
 }
-h4{
-	margin:0;
-	padding:0;
-	text-indent:25px;
-}
-ul{
+
+#bills{
+	padding: 0;
 	margin-left:35px;
+	margin-right:35px;
 }
+
 .bill{
-	margin: 10px;
-	padding: 20px;
 	border:1px solid black;
-	height: 10em;
 	overflow:hidden;
-	
+	max-width: 75%;
+	margin-bottom: 1vh;
+	margin-left: auto;
+	margin-right: auto;
 }
-.alive{
+
+.bill.alive{
 	background-color: #EDFFEF;	
 }
-.dead{
+
+.bill.dead{
 	background-color: #FFEBEB;
 }
-.limbo{
+
+.bill.limbo{
 	background-color: #FEFFDB;
 }
+
 #expand{
 	float:right;
 	top:0px;
 }
+
 .bill.tall{
 	height:auto;
 
