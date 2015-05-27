@@ -1,9 +1,3 @@
-var senatetext = '';
-var housetext = '';
-var billactions = [];
-var moreactions = [];
-var loadcomplete = false;
-var last = "house";
 var senateBills: HTMLElement;
 var houseBills: HTMLElement;
 //please don't steal my API key ;_;
